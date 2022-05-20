@@ -77,20 +77,20 @@
           </div>
         </div>
       </header>
+      <main>
       <div class="container flex">
-        <div class="mt-3 lk__container flex">
-          <div class="col-3">
-            <div class="nav flex-column">
-              <button class="lk_nav-btn lk_btn-active btn-reset"  data-unit="one">Мои Подкасты и аудиокниги</button>
-              <button class="lk_nav-btn btn-reset" data-unit="two">Сохраненные композиции</button>
-              <button class="lk_nav-btn btn-reset"  data-unit="three">Настройки</button>
-            </div>
+        <div class="lk__container flex">
+          <div class="lk_nav-container">
+            <ul class="lk__aside-nav-list list-reset flex">
+              <li class="lk__nav-item"><button class="lk_nav-btn lk_btn-active btn-reset"  data-unit="one">Мои Подкасты и аудиокниги</button></li>
+              <li class="lk__nav-item"><button class="lk_nav-btn btn-reset" data-unit="two">Сохраненные композиции</button></li>
+              <li class="lk__nav-item"><button class="lk_nav-btn btn-reset"  data-unit="three">Настройки</button></li>
+            </ul>
           </div>
-          <div class="col-9">
-            <div class="tab-content" id="v-pills-tabContent">
+          <div class="lk_tabs_content-container">
               <div class="lk_tab-pane tab-pane-active" data-target="one">
                 <ul class="podcasts__list list-reset flex" style="flex-direction: column;">
-                    <li class="podcasts__list-item flex">
+                    <li class="podcasts__list-item lk_podcast-item flex">
                       <img src="../img/Chapaev.png" class="podcast__item-img" alt="">
                       <div class="podcast__item-container  flex">
                         <div class="podcast__container-top flex">
@@ -117,13 +117,13 @@
                         </div>
                       </div>
                     </li>
-                    <li class="podcasts__list-item flex">
+                    <li class="podcasts__list-item lk_podcast-item flex">
                       <img src="../img/Dostoevskiy.jpg" class="podcast__item-img" alt="">
                       <div class="podcast__item-container  flex">
                         <div class="podcast__container-top flex">
                           <div class="podcast__description-container flex">
                             <span class="podcast__duration">10 часов 34 минуты</span>
-                            <h3 class="podacst__name">Идиот Федор Достоевский</h3>
+                            <h3 class="podacst__name"> Братья Карамазовы Федор Достоевский</h3>
                             <span class="podcast__reads">Юрий Григорьев</span>
                           </div>
                           <button class="btn-reset podcast__play-btn"></button>
@@ -144,7 +144,7 @@
                         </div>
                       </div>
                     </li>
-                    <li class="podcasts__list-item flex">
+                    <li class="podcasts__list-item lk_podcast-item flex">
                       <img src="../img/js-podcast.png" class="podcast__item-img" alt="">
                       <div class="podcast__item-container  flex">
                         <div class="podcast__container-top flex">
@@ -172,16 +172,16 @@
                       </div>
                     </li>
                 </ul>
-                </div>
               </div>
               <div class="lk_tab-pane" data-target="two">
                   <h2 section-title>Сохраненнные композиции не обнаружены</h2>
-                </div>
+              </div>
               <div class="lk_tab-pane" data-target="three" >
               </div>
             </div>
           </div>
         </div>
+      </main>
       <footer class="footer">
       <div class="container footer-container flex">
         <div class="top-footer-container flex">
@@ -256,62 +256,21 @@
           <span class="footer-bottom-copyright">W-WAVE ® 2022</span>
         </div>
     </footer>
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
   <script>
-    let path = location.pathname.split("/")[2];
+
     let user;
+    let path = location.pathname.split("/")[1];
+
     async function getUser() {
-      let response = await fetch(getUser); //отправила запрос на сервер
+      let response = await fetch("/getUser"); //отправила запрос на сервер
       return await response.json(); //возвращает полученные данные в json
-    }
-    // async function getUsers() {
-    //   let response = await fetch("/getUsers"); //отправила запрос на сервер
-    //   return await response.json();
-    // }
-    //Работаем с историей по кнопкам в браузере
-    // addEventListener('popstate', event => {
-    //   let pathPop = location.pathname.split("/")[2]
-    //   if (pathPop == "profile") {
-    //     $('#profileTab').tab('show');
-    //     console.log(pathPop);
-    //   } else if (pathPop == "messages") {
-    //     $('#messagesTab').tab('show');
-    //     console.log(pathPop);
-    //   } else if (pathPop == "settings") {
-    //     $('#settingsTab').tab('show');
-    //     console.log(pathPop);
-    //   }
-    // });
-    // if (path == "profile") {
-    //  user = getUser();
-    // user.then(result => {
-    // console.log(result);
-    // })
+    };
+
+    if (path == "profile") {
       getUser().then(user => {
         userName.innerText = `${user.name} ${user.lastname}`
-      });
-
-    //   $('#v-pills-profile').tab('show');
-    // } else if (path == "messages") {
-    //   $('#v-pills-messages').tab('show');
-    // } else if (path == "settings") {
-    //   getUsers().then(users => {
-    //     console.log(users);
-    //   })
-    //   $('#v-pills-settings').tab('show');
-    // } else {
-    //   location.href = location.protocol + "//" + location.host;
-    // }
-    // document.getElementById(path + "Tab").classList.add("active");
-    // let navLinks = document.querySelectorAll(".nav-link");
-    // for (let i = 0; i < navLinks.length; i++) {
-    //   navLinks[i].addEventListener("click", () => {
-    //     let page = navLinks[i].getAttribute("aria-controls").split("v-pills-")[1];
-    //     console.log(page);
-    //     history.pushState('', '', page);
-    //   })
-    // }
+      })
+    };
 
     document.querySelectorAll('.lk_nav-btn').forEach(function(tabsBtn) {
       tabsBtn.addEventListener('click', function (e) {

@@ -2062,12 +2062,30 @@ body {
   padding: 0;
 }
 
+/*lk*/
 .lk_tab-pane {
   display: none;
 }
 
 .tab-pane-active {
   display: block;
+}
+
+.lk__aside-nav-list {
+  flex-direction: column;
+}
+
+.lk__nav-item:not(:last-child) {
+  margin-bottom: 30px;
+}
+
+.lk_podcast-item {
+    width: 100%;
+    max-width: 550px;
+  }
+
+.lk_nav-container {
+  margin-right: 100px;
 }
 
 /*login*/
