@@ -1,0 +1,39 @@
+@keyframes menu-open {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes menu-close {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes search-open {
+  from {
+    transform: translateY(-50%) scaleX(0);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(-50%) scaleX(100%);
+    opacity: 1;
+  }
+}
+
+@keyframes search-close {
+  from {
+    transform: translateY(-50%) scaleX(100%);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-50%) scaleX(0);
+    opacity: 0;
+  }
+}

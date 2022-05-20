@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>W-Wave- Login</title>
+    <link rel="stylesheet" href="../css/normalize.css"/>
+		<link rel="stylesheet" href="../css/style.css"/>
+	</head>
+	<body>
+    <div class=" container login__container flex">
+      <h2 class="login__title section-title">Вход</h2>
+      <p class="login__descr">Если у вас еще нет аккаунта, <a class="control-link" href="/reg">зарегестрируйтесь</a></p>
+      <form class="form login_form flex" onsubmit="sendForm(this); return false;">
+        <div class="login__input-container login_form_inner flex">
+          <label class="login__label" for="e-mail">
+            <input type="text" class="form-control" name="email" placeholder="E-mail" id="e-mail"/>
+          </label>
+          <label class="login__label" for="pass">
+            <input type="password" class="form-control" name="pass" placeholder="Пароль" id="pass"/>
+          </label>
+          <p id="info"></p>
+        </div>
+          <button type="submit" value="submit" class="control__button btn-reset form-btn"> Авторизоваться</button>
+      </form>
+    </div>
+		<script>
+			async function sendForm(form) {
+				let formData = new FormData(form);
+
+				let response = await fetch("authUser", {
+					method: "POST",
+					body: formData,
+				});
+				let res = await response.json();
+				if (res.result == "ok") {
+					location.href = "/users/profile";
+				} else if (res.result == "rejected") {
+					info.innerText = `Неправильный логин или пароль`;
+				} else {
+					alert("Неизвестная ошибка");
+				}
+			}
+		</script>
+	</body>
+</html>

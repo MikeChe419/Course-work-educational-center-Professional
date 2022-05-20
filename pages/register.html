@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>W-Wave-регистрация</title>
+    <link rel="stylesheet" href="../css/normalize.css"/>
+		<link rel="stylesheet" href="../css/style.css"/>
+	</head>
+	<body>
+		<div class=" container login__container flex">
+      <h2 class="login__title section-title">Регистрация</h2>
+      <form class="form login_form flex" id="register_form" onsubmit="sendForm(this); return false;">
+        <div class="login__input-container login_form_inner flex">
+          <label class="login__label" for="name">
+            <input type="text" class="form-control" name="name" placeholder="Имя" required/>
+          </label>
+          <label class="login__label" for="lastname">
+            <input type="text" class="form-control" name="lastname" placeholder="Фамилия" required/>
+          </label>
+          <label class="login__label" for="e-mail">
+            <input type="text" class="form-control" name="email" placeholder="E-mail" id="e-mail" required/>
+          </label>
+          <label class="login__label" for="pass">
+            <input type="password" class="form-control" name="pass" placeholder="Пароль" id="pass" required/>
+          </label>
+          <p id="info"></p>
+        </div>
+          <button type="submit" value="submit" class="control__button btn-reset form-btn">Зарегестрироваться</button>
+      </form>
+    </div>
+		<script>
+			async function sendForm(form) {
+				info.innerText = ``;
+				let formData = new FormData(form);
+
+				let response = await fetch("addUser", {
+					method: "POST",
+					body: formData,
+				});
+				//console.log(await response.json());
+				let res = await response.json();
+				if (res.result == "success") {
+          info.innerText = `Вы успешно зарегистрированы!`;
+					setTimeout(() => {
+						location.href = "/users/profile";
+					}, 1000);
+				} else if (res.result == "exist") {
+					info.innerText = `Такой пользователь уже есть!`;
+				} else {
+					alert("Что-то пошло не так. Попробуйте еще раз.");
+				}
+			}
+		</script>
+	</body>
+</html>
