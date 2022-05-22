@@ -85,18 +85,21 @@
               <li class="lk__nav-item"><button class="lk_nav-btn lk_btn-active btn-reset"  data-unit="one">Мои Подкасты и аудиокниги</button></li>
               <li class="lk__nav-item"><button class="lk_nav-btn btn-reset" data-unit="two">Сохраненные композиции</button></li>
               <li class="lk__nav-item"><button class="lk_nav-btn btn-reset"  data-unit="three">Настройки</button></li>
+
+
+
             </ul>
           </div>
           <div class="lk_tabs_content-container">
               <div class="lk_tab-pane tab-pane-active" data-target="one">
-                <ul class="podcasts__list list-reset flex" style="flex-direction: column;">
+                <ul class="podcasts__list list-reset flex lk_podcasts-list" style="flex-direction: column;">
                     <li class="podcasts__list-item lk_podcast-item flex">
                       <img src="../img/Chapaev.png" class="podcast__item-img" alt="">
                       <div class="podcast__item-container  flex">
                         <div class="podcast__container-top flex">
                           <div class="podcast__description-container flex">
                             <span class="podcast__duration">12 часов 31 минута</span>
-                            <h3 class="podacst__name">Чапаев и пустота Виктор Пелевин</h3>
+                            <h3 class="podacst__name">Чапаев и Пустота </br> Виктор Пелевин</h3>
                             <span class="podcast__reads">Михаил Черняк</span>
                           </div>
                           <button class="btn-reset podcast__play-btn"></button>
@@ -123,7 +126,7 @@
                         <div class="podcast__container-top flex">
                           <div class="podcast__description-container flex">
                             <span class="podcast__duration">10 часов 34 минуты</span>
-                            <h3 class="podacst__name"> Братья Карамазовы Федор Достоевский</h3>
+                            <h3 class="podacst__name">Братья Карамазовы </br> Федор Достоевский</h3>
                             <span class="podcast__reads">Юрий Григорьев</span>
                           </div>
                           <button class="btn-reset podcast__play-btn"></button>
@@ -150,7 +153,7 @@
                         <div class="podcast__container-top flex">
                           <div class="podcast__description-container flex">
                             <span class="podcast__duration">24 часа </span>
-                            <h3 class="podacst__name">JAVASCRIPT для чайников или как запилить диплом за 3 дня</h3>
+                            <h3 class="podacst__name">JAVASCRIPT для чайников или </br> как запилить диплом за 3 дня</h3>
                             <span class="podcast__reads">Сергей Чижиков</span>
                           </div>
                           <button class="btn-reset podcast__play-btn"></button>
@@ -268,7 +271,7 @@
 
     if (path == "profile") {
       getUser().then(user => {
-        userName.innerText = `${user.name} ${user.lastname}`
+        userName.innerText = '${user.name} ${user.lastname}';
       })
     };
 

@@ -3,7 +3,7 @@ session_start();
 header('Content-Type: text/html; charset=utf-8');
 
 $url = explode('/', $_SERVER['REQUEST_URI']);
-require_once("php/classes/User.php");
+require_once("php/User.php");
 require_once("php/db.php");
 
 if ($url[1] == "auth") {
@@ -20,9 +20,11 @@ if ($url[1] == "auth") {
   echo User::authUser($_POST["email"], $_POST["pass"]);
 } else if ($url[1] == "getUser") {
   echo User::getUser($_SESSION["id"]);
-} else {
+} else if {
   $content = file_get_contents("pages/index.php");
-}
+} else (location.href = "/users/profile") {
+  $content = file_get_contents("pages/login.html");
+};
 
 if (!empty($content))
   require_once("template.php");

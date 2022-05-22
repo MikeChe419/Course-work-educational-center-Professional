@@ -5,7 +5,7 @@
     const links = menu.querySelectorAll(`.${params.linksClass}`);
 
     function closeBurger () {
-      if (window.screen.width <= 980) {
+      if (window.screen.width <= 1368) {
         btn.classList.toggle(params.activeClass);
         if (
           !menu.classList.contains(params.activeClass) &&
